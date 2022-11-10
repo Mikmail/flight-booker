@@ -1,0 +1,46 @@
+%h1.text-center Booking info 
+.grid.grid-cols-auto.m-20.text-center
+  %table
+    %thead 
+      %tr 
+        %th Flight ID 
+        %th Date 
+        %th Time 
+        %th Passengers 
+        %th Departure 
+        %th Destination 
+        %th Price 
+    %tbody 
+      %tr 
+        %td= @flight.id
+        %td= @flight.date.strftime("%d/%m/%Y")
+        %td= @flight.date.strftime("%H:%m")
+        %td= params[:passenger_count]
+        %td= @flight.from_airport.airport_code
+        %td= @flight.to_airport.airport_code
+        %td 
+          = @flight.price 
+          \$ 
+- passenger_count = 1
+%br
+
+= form_for @booking, remote: true do |booking| 
+  = booking.fields_for :passengers do |passenger| 
+    .row 
+      %h5.text-center.text-1xl
+        Passenger #{passenger_count.to_s}
+      %br
+      .col-md-10.col-md-offset-1.mt-20 
+        - passenger_count += 1 
+        = passenger.label :name 
+        %br 
+        = passenger.text_field :name
+        %br 
+        = passenger.label :email 
+        %br 
+        = passenger.text_field :email 
+        %br
+        %hr.pb-15
+
+  = booking.hidden_field :flight_id, value: @flight.id
+  = booking.submit "Confirm"

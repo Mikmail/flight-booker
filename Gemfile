@@ -3,6 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.1'
 
+gem 'haml-rails'
+
+gem 'devise'
+
+gem 'bcrypt', '~> 3.1', '>= 3.1.10'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7'
 # Use sqlite3 as the database for Active Record
