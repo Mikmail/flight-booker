@@ -4,7 +4,7 @@ class FlightsController < ApplicationController
     @flight = Flight.new 
     @airports = Airport.all.map { |airport| [airport.city, airport.id]}
     @dates = Flight.order("date asc").all.map { |flight| [flight.date.strftime("%d/%m/%Y")]}.uniq 
-    @passengers = [1, 2, 3, 4, 5]
+    @passengers = [1, 2, 3, 4, 5, 6]
 
     if !params[:flight].nil? 
       @from = params[:flight][:from_airport]
