@@ -1,8 +1,8 @@
 - if !@flights.nil?
   - if !@flights.empty?
     = form_tag new_booking_path, method: :get do
-      #flights-form.row
-        .col-md-8.col-md-offset-2{:style => "margin-top:100px;"}
+      #flights-form.row.bg-green-600
+        .col-md-8.col-md-offset-2
           %table.table.table-striped.table-bordered
             %thead
               %tr
@@ -22,10 +22,10 @@
                   %td= f.date.strftime("%d/%m/%Y")
                   %td= f.date.strftime("%H:%m")
                   %td= params[:flight][:passengers]
-                  %td= f.from_airport.code
-                  %td= f.to_airport.code
+                  %td= f.from_airport.airport_code
+                  %td= f.to_airport.airport_code
                   %td
                     = f.price
-                    \€
+                    \$
           = hidden_field_tag :passenger_count, params[:flight][:passengers]
-          = submit_tag("Order", class: "form-control btn btn-primary btn-block search-btn", id: 'order-btn')
+          = submit_tag("Order", id: 'order-btn')

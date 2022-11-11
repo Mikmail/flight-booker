@@ -2,9 +2,9 @@ airports = {:NYC => "New York",
             :SFO => "San Francisco",
             :LON => "London",
             :LPL => "Liverpool",
-            :BEG => "Belgrade",
+            :ARN => "Stockholm",
             :BER => "Berlin",
-            :ZRH => "Zurich"
+            :OSL => "Oslo"
 }
 
 airports.each do |k, v|
@@ -16,7 +16,7 @@ all_airports = Airport.all
 
 index = airports.length - 1
 
-1000.times do
+500.times do
   departure_airport = all_airports[rand(0..index)].id
   destination_airport = all_airports[rand(1..index)].id
   Flight.create(date: rand(4.days).seconds.from_now,
