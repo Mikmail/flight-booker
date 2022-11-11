@@ -1,31 +1,38 @@
 - if !@flights.nil?
   - if !@flights.empty?
     = form_tag new_booking_path, method: :get do
-      #flights-form.row
-        .col-md-8.col-md-offset-2
-          %table
-            %thead
+      .grid.grid-cols-auto.text-center
+        %table
+          %thead
+            %tr
+              %th
+              %th 
+                = link_to "Flight ID", :sort => "id"
+              %th 
+                = link_to "Date", :sort => "date"
+              %th 
+                = link_to "Time", :sort => "time"
+              %th 
+                = link_to "Passengers", :sort => "passengers"
+              %th 
+                = link_to "Departure", :sort => "departure"
+              %th 
+                = link_to "Destination", :sort => "destination"
+              %th 
+                = link_to "Price", :sort => "price"
+          %tbody
+            - @flights.each do |f|
               %tr
-                %th
-                %th Flight ID
-                %th Date
-                %th Time
-                %th Passengers
-                %th Departure
-                %th Destination
-                %th Price
-            %tbody
-              - @flights.each do |f|
-                %tr
-                  %td= radio_button_tag(:flight_selected, f.id, checked: f)
-                  %td= f.id
-                  %td= f.date.strftime("%d/%m/%Y")
-                  %td= f.date.strftime("%H:%m")
-                  %td= params[:flight][:passengers]
-                  %td= f.from_airport.airport_code
-                  %td= f.to_airport.airport_code
-                  %td
-                    = f.price
-                    \$
-          = hidden_field_tag :passenger_count, params[:flight][:passengers]
-          = submit_tag("Order", id: 'order-btn')
+                %td= radio_button_tag(:flight_selected, f.id, checked: f)     
+                %td= f.id
+                %td= f.date.strftime("%d/%m/%Y")
+                %td= f.date.strftime("%H:%m")
+                %td= params[:flight][:passengers]
+                %td= f.from_airport.airport_code
+                %td= f.to_airport.airport_code
+                %td
+                  = f.price
+                  \$
+        = hidden_field_tag :passenger_count, params[:flight][:passengers]
+        .px-4.py.2.bg-blue-500.text-white.rounded-md.hover:bg-blue-300.cursor-pointer
+          = submit_tag("Order")

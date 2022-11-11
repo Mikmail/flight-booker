@@ -1,6 +1,7 @@
 class FlightsController < ApplicationController
 
   def index 
+    @flights = Flight.order(params[:sort])
     @flight = Flight.new 
     @airports = Airport.all.map { |airport| [airport.city, airport.id]}
     @dates = Flight.order("date asc").all.map { |flight| [flight.date.strftime("%d/%m/%Y")]}.uniq 
