@@ -10,7 +10,7 @@
         %th Departure 
         %th Destination 
         %th Price 
-    %tbody 
+    %tbody
       %tr 
         %td= @flight.id
         %td= @flight.date.strftime("%d/%m/%Y")
@@ -24,23 +24,23 @@
 - passenger_count = 1
 %br
 
-= form_for @booking, remote: true do |booking| 
-  = booking.fields_for :passengers do |passenger| 
-    .row 
+.grid.text-center.m-10
+  = form_with model: @booking do |booking|
+    = booking.fields_for :passengers do |passenger|
       %h5.text-center.text-1xl
         Passenger #{passenger_count.to_s}
       %br
-      .col-md-10.col-md-offset-1.mt-20 
-        - passenger_count += 1 
-        = passenger.label :name 
-        %br 
-        = passenger.text_field :name
-        %br 
-        = passenger.label :email 
-        %br 
-        = passenger.text_field :email 
+      .col-md-10.mt-20
+        - passenger_count += 1
+        = passenger.label :name
         %br
-        
+        = passenger.text_field :name
+        %br
+        = passenger.label :email
+        %br
+        = passenger.text_field :email
+        %br
 
-  = booking.hidden_field :flight_id, value: @flight.id
-  = booking.submit "Confirm"
+    = booking.hidden_field :flight_id, value: @flight.id
+    .px-4.py.bg-blue-500.text-white.rounded-md.hover:bg-blue-300.mt-5.cursor-pointer
+      = booking.submit "Confirm"

@@ -7,19 +7,19 @@
             %tr
               %th
               %th 
-                = link_to "Flight ID", :sort => "id"
+                Flight ID
               %th 
-                = link_to "Date", :sort => "date"
+                Date
               %th 
-                = link_to "Time", :sort => "time"
+                Time
               %th 
-                = link_to "Passengers", :sort => "passengers"
+                Passengers
               %th 
-                = link_to "Departure", :sort => "departure"
+                Departure
               %th 
-                = link_to "Destination", :sort => "destination"
-              %th 
-                = link_to "Price", :sort => "price"
+                Destination
+              %th
+                Price
           %tbody
             - @flights.each do |f|
               %tr
@@ -34,5 +34,6 @@
                   = f.price
                   \$
         = hidden_field_tag :passenger_count, params[:flight][:passengers]
-        .px-4.py.2.bg-blue-500.text-white.rounded-md.hover:bg-blue-300.cursor-pointer
-          = submit_tag("Order")
+        = button_tag(type: "submit") do
+          .px-4.py.bg-blue-500.text-white.rounded-md.hover:bg-blue-300.mt-10
+            Order

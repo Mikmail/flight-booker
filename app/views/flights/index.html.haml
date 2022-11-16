@@ -17,10 +17,10 @@
       = f.select(:passengers, @passengers, {selected: @passengers_select})
     %br/
     %br/
-    .row
-      .col-md-4.col-md-offset-4
-      .px-3.py.2.bg-blue-500.text-white.rounded-md.hover:bg-blue-300.cursor-pointer
-        = f.submit "Search", id: 'search-btn'
+    .col-md-4.col-md-offset-4
+      = button_tag(type: "submit") do
+        .px-3.py.bg-blue-500.text-white.rounded-md.hover:bg-blue-300.cursor-pointer
+          Search
 %br/
 
 

@@ -9,16 +9,13 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(whitelist_params)
-    respond_to do |format|
-      if @booking.save
-        @booking.passengers.each do |passenger|
-          PassengerMailer.booking_info(passenger).deliver_now
-        end
-        redirect_to root_path
-      else
-        render :new
+    if @booking.save
+      @booking.passengers.each do |passenger|
+        PassengerMailer.booking_info(passenger).deliver_now
       end
-
+      redirect_to root_path
+    else
+      render :new
     end
   end
 
