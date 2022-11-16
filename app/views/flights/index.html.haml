@@ -2,22 +2,22 @@
   %h1.text-center Search for flights:
   %br/
   = form_for @flight, html: {method: :get} do |f|
-    .col-md-4
+    .md-4
       = f.label :from_airport
       = f.select(:from_airport, @airports, {selected: @from}, {id: 'from_airport'})
       %br/
-    .col-md-4.text-center
+    .text-center
       = f.label :to_airport
       = f.select(:to_airport, @airports, {selected: @to}, {id: 'to_airport'})
-    .col-md-4.col-md-offset-2.text-center
+    .text-center
       = f.label :date
       = f.select(:date, @dates, {selected: @date})
-    .col-md-4.text-center
+    .text-center
       = f.label :passengers
       = f.select(:passengers, @passengers, {selected: @passengers_select})
     %br/
     %br/
-    .col-md-4.col-md-offset-4
+    .m-2
       = button_tag(type: "submit") do
         .px-3.py.bg-blue-500.text-white.rounded-md.hover:bg-blue-300.cursor-pointer
           Search

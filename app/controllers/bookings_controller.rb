@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
       @booking.passengers.each do |passenger|
         PassengerMailer.booking_info(passenger).deliver_now
       end
-      redirect_to root_path
+      redirect_to @booking
     else
       render :new
     end

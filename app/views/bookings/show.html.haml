@@ -1,0 +1,41 @@
+.grid.grid-cols-auto.text-center
+  - passengers_count = @booking.passengers.count
+  %h1.text-center.m-5.text-2xl Booking info
+  %table.m-10
+    %thead
+      %tr
+        %th Flight ID
+        %th Date
+        %th Time
+        %th Passengers
+        %th Departure
+        %th Destination
+        %th Price
+    %tbody
+      %tr
+        %td= @flight.id
+        %td= @flight.date.strftime("%d/%m/%Y")
+        %td= @flight.date.strftime("%H:%m")
+        %td= passengers_count
+        %td= @flight.from_airport.airport_code
+        %td= @flight.to_airport.airport_code
+        %td
+          = @flight.price
+          \$
+  %h1.text-center Bookings for:
+  - @booking.passengers.each_with_index do |p, i|
+    .m-5
+      %h5
+        %strong Name:
+        = p.name
+      %h5
+        %strong Email:
+        = p.email
+    - if i == passengers_count-1
+      %code.m-5
+        Total: #{passengers_count * @flight.price} $
+
+
+  = link_to root_path do
+    .px-4.bg-blue-500.text-white.rounded-md.hover:bg-blue-300.cursor-pointer
+      Home

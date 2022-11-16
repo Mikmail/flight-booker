@@ -27,10 +27,10 @@
 .grid.text-center.m-10
   = form_with model: @booking do |booking|
     = booking.fields_for :passengers do |passenger|
-      %h5.text-center.text-1xl
+      %h5.text-center.text-1xl.mt-5
         Passenger #{passenger_count.to_s}
       %br
-      .col-md-10.mt-20
+      .mt-5
         - passenger_count += 1
         = passenger.label :name
         %br
