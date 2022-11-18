@@ -1,0 +1,6 @@
+%h3
+  Hello #{@passenger.name}
+%p
+  Thank you for choosing Odin-Flight-Booker. You can see your flight info by clicking the link below.
+
+= link_to "Booking Info", booking_url(@passenger.bookings.last)

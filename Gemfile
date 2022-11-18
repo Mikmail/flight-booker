@@ -9,6 +9,8 @@ gem 'devise'
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.10'
 
+gem "letter_opener", group: :development
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7'
 # Use sqlite3 as the database for Active Record

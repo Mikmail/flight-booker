@@ -11,9 +11,9 @@ class BookingsController < ApplicationController
     @booking = Booking.new(whitelist_params)
     if @booking.save
       @booking.passengers.each do |passenger|
-        PassengerMailer.booking_info(passenger).deliver_now
+        PassengerMailer.mailer(passenger).deliver_now
       end
-      redirect_to @booking
+      redirect_to root_url
     else
       render :new
     end
